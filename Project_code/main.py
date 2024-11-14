@@ -9,6 +9,7 @@ import conformance_heatmap_vis
 import activity_interaction_network
 import tkinter as tk
 
+
 def petri_nets_visualization ():
     print ("It is a petri net")
     return None
