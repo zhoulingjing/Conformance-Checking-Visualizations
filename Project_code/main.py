@@ -11,7 +11,7 @@ import activity_interaction_network
 
 
 
-
+import_t.import_csv("E:\Conformance-Checking-Visualizations\Project_code\running-example.csv")
 
 
 
