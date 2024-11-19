@@ -8,22 +8,9 @@ import import_t
 import conformance_heatmap_vis
 import activity_interaction_network
 import tkinter as tk
+import dotted_chart
 
-
-def petri_nets_visualization ():
-    print ("It is a petri net")
-    return None
-
-def performance_spectrum_visualization ():
-    print("It is a performance spectrum")
-    return None
-
-def dotted_chart_visualization():
-    print("It is Dotted Chart")
-    return None
-
-
-
+file_path = r"E:\Conformance-Checking-Visualizations\Project_code\receipt.csv"
 
 root = tk.Tk()
 root.title ("Implementation of Process Mining Visualizations for Conformance Checking")
@@ -34,7 +21,8 @@ def on_button_click(button_name):
         petri_nets_visualization()
 
     if (button_name == "Dotted Chart"):
-        dotted_chart_visualization()
+        dotted_chart.generate_dotted_chart(import_t.import_csv(file_path))
+        
 
     if (button_name == "Performance Spectrum"):
         performance_spectrum_visualization()
@@ -52,9 +40,3 @@ for i, name in enumerate(button_names):
     buttons.append(button)
     button.grid(row=i//4, column=i%4, padx=10, pady=10)
 root.mainloop()
-
-
-
-
-
-
