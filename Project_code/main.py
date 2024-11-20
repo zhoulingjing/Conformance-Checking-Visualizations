@@ -8,7 +8,8 @@ import import_t
 import conformance_heatmap_vis
 import activity_interaction_network
 import tkinter as tk
-import dotted_chart
+import dotted_chart_petri_bpmn as dottedpetri
+
 
 file_path = r"E:\Conformance-Checking-Visualizations\Project_code\receipt.csv"
 
@@ -18,14 +19,15 @@ root.geometry ("1000x600")
 
 def on_button_click(button_name):
     if (button_name == "Petri Nets"):
-        petri_nets_visualization()
+        dottedpetri.generate_petri_netz(import_t.import_csv(file_path))
 
     if (button_name == "Dotted Chart"):
-        dotted_chart.generate_dotted_chart(import_t.import_csv(file_path))
+        dottedpetri.generate_dotted_chart(import_t.import_csv(file_path))
         
-
     if (button_name == "Performance Spectrum"):
-        performance_spectrum_visualization()
+        dottedpetri.generate_dotted_chart(import_t.import_csv(file_path))
+
+        
 
     print(f"{button_name} clicked")
 
