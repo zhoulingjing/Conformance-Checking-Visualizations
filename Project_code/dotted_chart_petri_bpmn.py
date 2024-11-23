@@ -1,6 +1,8 @@
 import pm4py
 from import_t import import_csv
 from pm4py.algo.conformance.tokenreplay import algorithm as token_replay
+from pm4py.algo.filtering.pandas import timestamp_filter
+
 
 
 def generate_dotted_chart(event_log):
@@ -38,14 +40,8 @@ if __name__ == "__main__":
     event_log = import_csv(file_path)
 
     #process tree 
-
     generate_process_tree(event_log)
-
-
     #Petri_netz
-
     generate_petri_netz(event_log)
-
     #Dotted_chart
-
     generate_dotted_chart(event_log)

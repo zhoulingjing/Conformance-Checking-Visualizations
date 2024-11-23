@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="alpha_classic_net_1732134058.475112" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>alpha_classic_net_1732134058.475112</text>
+    </name>
+    <page id="n0">
+      <place id="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})">
+        <name>
+          <text>({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})</text>
+        </name>
+      </place>
+      <place id="({'T19 Determine report Y to stop indication', 'T02 Check confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})">
+        <name>
+          <text>({'T19 Determine report Y to stop indication', 'T02 Check confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})">
+        <name>
+          <text>({'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T17 Check report Y to stop indication'}, {'T19 Determine report Y to stop indication'})">
+        <name>
+          <text>({'T17 Check report Y to stop indication'}, {'T19 Determine report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T19 Determine report Y to stop indication'}, {'T20 Print report Y to stop indication'})">
+        <name>
+          <text>({'T19 Determine report Y to stop indication'}, {'T20 Print report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="start">
+        <name>
+          <text>start</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="end">
+        <name>
+          <text>end</text>
+        </name>
+      </place>
+      <place id="({'T02 Check confirmation of receipt'}, {'T16 Report reasons to hold request'})">
+        <name>
+          <text>({'T02 Check confirmation of receipt'}, {'T16 Report reasons to hold request'})</text>
+        </name>
+      </place>
+      <place id="({'T09-3 Process or receive external advice from party 3'}, {'T09-1 Process or receive external advice from party 1'})">
+        <name>
+          <text>({'T09-3 Process or receive external advice from party 3'}, {'T09-1 Process or receive external advice from party 1'})</text>
+        </name>
+      </place>
+      <place id="({'T14 Determine document X request unlicensed'}, {'T15 Print document X request unlicensed'})">
+        <name>
+          <text>({'T14 Determine document X request unlicensed'}, {'T15 Print document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T16 Report reasons to hold request'}, {'T19 Determine report Y to stop indication'})">
+        <name>
+          <text>({'T16 Report reasons to hold request'}, {'T19 Determine report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication'}, {'T17 Check report Y to stop indication', 'T11 Create document X request unlicensed'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication'}, {'T17 Check report Y to stop indication', 'T11 Create document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T08 Draft and send request for advice'}, {'T09-1 Process or receive external advice from party 1', 'T09-4 Process or receive external advice from party 4'})">
+        <name>
+          <text>({'T08 Draft and send request for advice'}, {'T09-1 Process or receive external advice from party 1', 'T09-4 Process or receive external advice from party 4'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication'}, {'T16 Report reasons to hold request', 'T11 Create document X request unlicensed'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication'}, {'T16 Report reasons to hold request', 'T11 Create document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T13 Adjust document X request unlicensed', 'T11 Create document X request unlicensed'}, {'T12 Check document X request unlicensed'})">
+        <name>
+          <text>({'T13 Adjust document X request unlicensed', 'T11 Create document X request unlicensed'}, {'T12 Check document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T04 Determine confirmation of receipt'})">
+        <name>
+          <text>({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T04 Determine confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T07-2 Draft intern advice aspect 2'}, {'T08 Draft and send request for advice', 'T10 Determine necessity to stop indication'})">
+        <name>
+          <text>({'T07-2 Draft intern advice aspect 2'}, {'T08 Draft and send request for advice', 'T10 Determine necessity to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T02 Check confirmation of receipt'})">
+        <name>
+          <text>({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T02 Check confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T19 Determine report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})">
+        <name>
+          <text>({'T19 Determine report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T12 Check document X request unlicensed', 'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T02 Check confirmation of receipt'})">
+        <name>
+          <text>({'T12 Check document X request unlicensed', 'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T02 Check confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T07-2 Draft intern advice aspect 2'}, {'T09-1 Process or receive external advice from party 1', 'T10 Determine necessity to stop indication'})">
+        <name>
+          <text>({'T07-2 Draft intern advice aspect 2'}, {'T09-1 Process or receive external advice from party 1', 'T10 Determine necessity to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T19 Determine report Y to stop indication'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T19 Determine report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T08 Draft and send request for advice', 'T09-2 Process or receive external advice from party 2'}, {'T09-4 Process or receive external advice from party 4'})">
+        <name>
+          <text>({'T08 Draft and send request for advice', 'T09-2 Process or receive external advice from party 2'}, {'T09-4 Process or receive external advice from party 4'})</text>
+        </name>
+      </place>
+      <place id="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})">
+        <name>
+          <text>({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})</text>
+        </name>
+      </place>
+      <place id="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})">
+        <name>
+          <text>({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})</text>
+        </name>
+      </place>
+      <place id="({'T17 Check report Y to stop indication'}, {'T20 Print report Y to stop indication'})">
+        <name>
+          <text>({'T17 Check report Y to stop indication'}, {'T20 Print report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'Confirmation of receipt', 'T19 Determine report Y to stop indication'}, {'T05 Print and send confirmation of receipt'})">
+        <name>
+          <text>({'Confirmation of receipt', 'T19 Determine report Y to stop indication'}, {'T05 Print and send confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T04 Determine confirmation of receipt'}, {'T11 Create document X request unlicensed'})">
+        <name>
+          <text>({'T04 Determine confirmation of receipt'}, {'T11 Create document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T04 Determine confirmation of receipt'}, {'T14 Determine document X request unlicensed'})">
+        <name>
+          <text>({'T04 Determine confirmation of receipt'}, {'T14 Determine document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T09-1 Process or receive external advice from party 1'}, {'T07-3 Draft intern advice hold for aspect 3'})">
+        <name>
+          <text>({'T09-1 Process or receive external advice from party 1'}, {'T07-3 Draft intern advice hold for aspect 3'})</text>
+        </name>
+      </place>
+      <place id="({'T11 Create document X request unlicensed'}, {'T14 Determine document X request unlicensed'})">
+        <name>
+          <text>({'T11 Create document X request unlicensed'}, {'T14 Determine document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T16 Report reasons to hold request'}, {'T17 Check report Y to stop indication'})">
+        <name>
+          <text>({'T16 Report reasons to hold request'}, {'T17 Check report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'Confirmation of receipt'}, {'T07-2 Draft intern advice aspect 2', 'T04 Determine confirmation of receipt'})">
+        <name>
+          <text>({'Confirmation of receipt'}, {'T07-2 Draft intern advice aspect 2', 'T04 Determine confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T12 Check document X request unlicensed', 'Confirmation of receipt'}, {'T04 Determine confirmation of receipt'})">
+        <name>
+          <text>({'T12 Check document X request unlicensed', 'Confirmation of receipt'}, {'T04 Determine confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T05 Print and send confirmation of receipt', 'T07-3 Draft intern advice hold for aspect 3'}, {'T07-4 Draft internal advice to hold for type 4'})">
+        <name>
+          <text>({'T05 Print and send confirmation of receipt', 'T07-3 Draft intern advice hold for aspect 3'}, {'T07-4 Draft internal advice to hold for type 4'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T16 Report reasons to hold request'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T16 Report reasons to hold request'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication'}, {'T19 Determine report Y to stop indication', 'T11 Create document X request unlicensed'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication'}, {'T19 Determine report Y to stop indication', 'T11 Create document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt'}, {'T10 Determine necessity to stop indication'})">
+        <name>
+          <text>({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt'}, {'T10 Determine necessity to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication', 'T13 Adjust document X request unlicensed'}, {'T12 Check document X request unlicensed'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication', 'T13 Adjust document X request unlicensed'}, {'T12 Check document X request unlicensed'})</text>
+        </name>
+      </place>
+      <place id="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T17 Check report Y to stop indication'})">
+        <name>
+          <text>({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T17 Check report Y to stop indication'})</text>
+        </name>
+      </place>
+      <place id="({'T12 Check document X request unlicensed'}, {'T14 Determine document X request unlicensed', 'T02 Check confirmation of receipt'})">
+        <name>
+          <text>({'T12 Check document X request unlicensed'}, {'T14 Determine document X request unlicensed', 'T02 Check confirmation of receipt'})</text>
+        </name>
+      </place>
+      <place id="({'T20 Print report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})">
+        <name>
+          <text>({'T20 Print report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})</text>
+        </name>
+      </place>
+      <transition id="T14 Determine document X request unlicensed">
+        <name>
+          <text>T14 Determine document X request unlicensed</text>
+        </name>
+      </transition>
+      <transition id="T07-5 Draft intern advice aspect 5">
+        <name>
+          <text>T07-5 Draft intern advice aspect 5</text>
+        </name>
+      </transition>
+      <transition id="T19 Determine report Y to stop indication">
+        <name>
+          <text>T19 Determine report Y to stop indication</text>
+        </name>
+      </transition>
+      <transition id="T03 Adjust confirmation of receipt">
+        <name>
+          <text>T03 Adjust confirmation of receipt</text>
+        </name>
+      </transition>
+      <transition id="T07-3 Draft intern advice hold for aspect 3">
+        <name>
+          <text>T07-3 Draft intern advice hold for aspect 3</text>
+        </name>
+      </transition>
+      <transition id="T06 Determine necessity of stop advice">
+        <name>
+          <text>T06 Determine necessity of stop advice</text>
+        </name>
+      </transition>
+      <transition id="T09-1 Process or receive external advice from party 1">
+        <name>
+          <text>T09-1 Process or receive external advice from party 1</text>
+        </name>
+      </transition>
+      <transition id="T13 Adjust document X request unlicensed">
+        <name>
+          <text>T13 Adjust document X request unlicensed</text>
+        </name>
+      </transition>
+      <transition id="T04 Determine confirmation of receipt">
+        <name>
+          <text>T04 Determine confirmation of receipt</text>
+        </name>
+      </transition>
+      <transition id="T11 Create document X request unlicensed">
+        <name>
+          <text>T11 Create document X request unlicensed</text>
+        </name>
+      </transition>
+      <transition id="T07-4 Draft internal advice to hold for type 4">
+        <name>
+          <text>T07-4 Draft internal advice to hold for type 4</text>
+        </name>
+      </transition>
+      <transition id="T02 Check confirmation of receipt">
+        <name>
+          <text>T02 Check confirmation of receipt</text>
+        </name>
+      </transition>
+      <transition id="T09-2 Process or receive external advice from party 2">
+        <name>
+          <text>T09-2 Process or receive external advice from party 2</text>
+        </name>
+      </transition>
+      <transition id="T17 Check report Y to stop indication">
+        <name>
+          <text>T17 Check report Y to stop indication</text>
+        </name>
+      </transition>
+      <transition id="T08 Draft and send request for advice">
+        <name>
+          <text>T08 Draft and send request for advice</text>
+        </name>
+      </transition>
+      <transition id="T10 Determine necessity to stop indication">
+        <name>
+          <text>T10 Determine necessity to stop indication</text>
+        </name>
+      </transition>
+      <transition id="T07-2 Draft intern advice aspect 2">
+        <name>
+          <text>T07-2 Draft intern advice aspect 2</text>
+        </name>
+      </transition>
+      <transition id="T18 Adjust report Y to stop indicition">
+        <name>
+          <text>T18 Adjust report Y to stop indicition</text>
+        </name>
+      </transition>
+      <transition id="T05 Print and send confirmation of receipt">
+        <name>
+          <text>T05 Print and send confirmation of receipt</text>
+        </name>
+      </transition>
+      <transition id="T16 Report reasons to hold request">
+        <name>
+          <text>T16 Report reasons to hold request</text>
+        </name>
+      </transition>
+      <transition id="T09-3 Process or receive external advice from party 3">
+        <name>
+          <text>T09-3 Process or receive external advice from party 3</text>
+        </name>
+      </transition>
+      <transition id="T09-4 Process or receive external advice from party 4">
+        <name>
+          <text>T09-4 Process or receive external advice from party 4</text>
+        </name>
+      </transition>
+      <transition id="T20 Print report Y to stop indication">
+        <name>
+          <text>T20 Print report Y to stop indication</text>
+        </name>
+      </transition>
+      <transition id="T15 Print document X request unlicensed">
+        <name>
+          <text>T15 Print document X request unlicensed</text>
+        </name>
+      </transition>
+      <transition id="Confirmation of receipt">
+        <name>
+          <text>Confirmation of receipt</text>
+        </name>
+      </transition>
+      <transition id="T07-1 Draft intern advice aspect 1">
+        <name>
+          <text>T07-1 Draft intern advice aspect 1</text>
+        </name>
+      </transition>
+      <transition id="T12 Check document X request unlicensed">
+        <name>
+          <text>T12 Check document X request unlicensed</text>
+        </name>
+      </transition>
+      <arc id="2508243514896" source="({'Confirmation of receipt'}, {'T07-2 Draft intern advice aspect 2', 'T04 Determine confirmation of receipt'})" target="T04 Determine confirmation of receipt"/>
+      <arc id="2508243415568" source="start" target="T05 Print and send confirmation of receipt"/>
+      <arc id="2508243503632" source="T09-3 Process or receive external advice from party 3" target="end"/>
+      <arc id="2508243508752" source="({'T04 Determine confirmation of receipt'}, {'T14 Determine document X request unlicensed'})" target="T14 Determine document X request unlicensed"/>
+      <arc id="2508243403280" source="T03 Adjust confirmation of receipt" target="end"/>
+      <arc id="2508243505680" source="({'T12 Check document X request unlicensed', 'Confirmation of receipt'}, {'T04 Determine confirmation of receipt'})" target="T04 Determine confirmation of receipt"/>
+      <arc id="2508243509776" source="Confirmation of receipt" target="({'Confirmation of receipt', 'T19 Determine report Y to stop indication'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243506192" source="T16 Report reasons to hold request" target="({'T16 Report reasons to hold request'}, {'T19 Determine report Y to stop indication'})"/>
+      <arc id="2508243516432" source="T19 Determine report Y to stop indication" target="({'T19 Determine report Y to stop indication', 'T02 Check confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243511824" source="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T16 Report reasons to hold request"/>
+      <arc id="2508243337424" source="T09-4 Process or receive external advice from party 4" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})"/>
+      <arc id="2508243349840" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication', 'T13 Adjust document X request unlicensed'}, {'T12 Check document X request unlicensed'})"/>
+      <arc id="2508243352592" source="Confirmation of receipt" target="({'T12 Check document X request unlicensed', 'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T02 Check confirmation of receipt'})"/>
+      <arc id="2508243403984" source="start" target="T14 Determine document X request unlicensed"/>
+      <arc id="2508243340688" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication'}, {'T16 Report reasons to hold request', 'T11 Create document X request unlicensed'})"/>
+      <arc id="2508243351376" source="T11 Create document X request unlicensed" target="({'T13 Adjust document X request unlicensed', 'T11 Create document X request unlicensed'}, {'T12 Check document X request unlicensed'})"/>
+      <arc id="2508243406416" source="T15 Print document X request unlicensed" target="end"/>
+      <arc id="2508243505232" source="({'T04 Determine confirmation of receipt'}, {'T11 Create document X request unlicensed'})" target="T11 Create document X request unlicensed"/>
+      <arc id="2508243513424" source="T16 Report reasons to hold request" target="({'T16 Report reasons to hold request'}, {'T17 Check report Y to stop indication'})"/>
+      <arc id="2508243505744" source="T04 Determine confirmation of receipt" target="({'T04 Determine confirmation of receipt'}, {'T11 Create document X request unlicensed'})"/>
+      <arc id="2508243509840" source="({'T09-1 Process or receive external advice from party 1'}, {'T07-3 Draft intern advice hold for aspect 3'})" target="T07-3 Draft intern advice hold for aspect 3"/>
+      <arc id="2508243510864" source="({'Confirmation of receipt', 'T19 Determine report Y to stop indication'}, {'T05 Print and send confirmation of receipt'})" target="T05 Print and send confirmation of receipt"/>
+      <arc id="2508243415120" source="start" target="T02 Check confirmation of receipt"/>
+      <arc id="2508243416656" source="start" target="Confirmation of receipt"/>
+      <arc id="2508243503312" source="T20 Print report Y to stop indication" target="end"/>
+      <arc id="2508243405392" source="T07-2 Draft intern advice aspect 2" target="end"/>
+      <arc id="2508243343440" source="({'T07-2 Draft intern advice aspect 2'}, {'T08 Draft and send request for advice', 'T10 Determine necessity to stop indication'})" target="T10 Determine necessity to stop indication"/>
+      <arc id="2508243345680" source="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T02 Check confirmation of receipt'})" target="T15 Print document X request unlicensed"/>
+      <arc id="2508243343376" source="({'T10 Determine necessity to stop indication'}, {'T16 Report reasons to hold request', 'T11 Create document X request unlicensed'})" target="T16 Report reasons to hold request"/>
+      <arc id="2508243341712" source="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T07-4 Draft internal advice to hold for type 4"/>
+      <arc id="2508243347920" source="T12 Check document X request unlicensed" target="({'T12 Check document X request unlicensed'}, {'T14 Determine document X request unlicensed', 'T02 Check confirmation of receipt'})"/>
+      <arc id="2508243337744" source="T09-3 Process or receive external advice from party 3" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})"/>
+      <arc id="2508243507792" source="T05 Print and send confirmation of receipt" target="({'T05 Print and send confirmation of receipt', 'T07-3 Draft intern advice hold for aspect 3'}, {'T07-4 Draft internal advice to hold for type 4'})"/>
+      <arc id="2508243405520" source="Confirmation of receipt" target="end"/>
+      <arc id="2508243340496" source="T13 Adjust document X request unlicensed" target="({'T10 Determine necessity to stop indication', 'T13 Adjust document X request unlicensed'}, {'T12 Check document X request unlicensed'})"/>
+      <arc id="2508243510544" source="({'T05 Print and send confirmation of receipt', 'T07-3 Draft intern advice hold for aspect 3'}, {'T07-4 Draft internal advice to hold for type 4'})" target="T07-4 Draft internal advice to hold for type 4"/>
+      <arc id="2508243346704" source="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt'}, {'T10 Determine necessity to stop indication'})" target="T10 Determine necessity to stop indication"/>
+      <arc id="2508243348944" source="({'T10 Determine necessity to stop indication'}, {'T17 Check report Y to stop indication', 'T11 Create document X request unlicensed'})" target="T11 Create document X request unlicensed"/>
+      <arc id="2508243338768" source="T05 Print and send confirmation of receipt" target="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})"/>
+      <arc id="2508243347216" source="T08 Draft and send request for advice" target="({'T08 Draft and send request for advice'}, {'T09-1 Process or receive external advice from party 1', 'T09-4 Process or receive external advice from party 4'})"/>
+      <arc id="2508243349456" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication'}, {'T19 Determine report Y to stop indication', 'T11 Create document X request unlicensed'})"/>
+      <arc id="2508243510928" source="({'T09-3 Process or receive external advice from party 3'}, {'T09-1 Process or receive external advice from party 1'})" target="T09-1 Process or receive external advice from party 1"/>
+      <arc id="2508243506832" source="T17 Check report Y to stop indication" target="({'T17 Check report Y to stop indication'}, {'T19 Determine report Y to stop indication'})"/>
+      <arc id="2508243414160" source="start" target="T11 Create document X request unlicensed"/>
+      <arc id="2508243402896" source="start" target="T19 Determine report Y to stop indication"/>
+      <arc id="2508243404944" source="start" target="T20 Print report Y to stop indication"/>
+      <arc id="2508243515536" source="Confirmation of receipt" target="({'Confirmation of receipt'}, {'T07-2 Draft intern advice aspect 2', 'T04 Determine confirmation of receipt'})"/>
+      <arc id="2508243507856" source="T04 Determine confirmation of receipt" target="({'T04 Determine confirmation of receipt'}, {'T14 Determine document X request unlicensed'})"/>
+      <arc id="2508243501712" source="T11 Create document X request unlicensed" target="end"/>
+      <arc id="2508243502224" source="T08 Draft and send request for advice" target="end"/>
+      <arc id="2508243515024" source="T20 Print report Y to stop indication" target="({'T20 Print report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243339280" source="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T16 Report reasons to hold request"/>
+      <arc id="2508243501392" source="T04 Determine confirmation of receipt" target="({'T19 Determine report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243351696" source="T20 Print report Y to stop indication" target="({'T12 Check document X request unlicensed', 'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T02 Check confirmation of receipt'})"/>
+      <arc id="2508243352720" source="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T17 Check report Y to stop indication'})" target="T12 Check document X request unlicensed"/>
+      <arc id="2508243348752" source="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T19 Determine report Y to stop indication'})" target="T19 Determine report Y to stop indication"/>
+      <arc id="2508243347024" source="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T11 Create document X request unlicensed"/>
+      <arc id="2508243349264" source="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T02 Check confirmation of receipt'})" target="T02 Check confirmation of receipt"/>
+      <arc id="2508243339088" source="Confirmation of receipt" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})"/>
+      <arc id="2508243406544" source="T04 Determine confirmation of receipt" target="end"/>
+      <arc id="2508243517136" source="({'T17 Check report Y to stop indication'}, {'T20 Print report Y to stop indication'})" target="T20 Print report Y to stop indication"/>
+      <arc id="2508243505360" source="T12 Check document X request unlicensed" target="({'T12 Check document X request unlicensed', 'Confirmation of receipt'}, {'T04 Determine confirmation of receipt'})"/>
+      <arc id="2508243513552" source="Confirmation of receipt" target="({'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243404496" source="start" target="T09-4 Process or receive external advice from party 4"/>
+      <arc id="2508243502800" source="T07-5 Draft intern advice aspect 5" target="end"/>
+      <arc id="2508243415760" source="start" target="T16 Report reasons to hold request"/>
+      <arc id="2508240423632" source="start" target="T10 Determine necessity to stop indication"/>
+      <arc id="2508243418832" source="start" target="T07-5 Draft intern advice aspect 5"/>
+      <arc id="2508243412176" source="start" target="T07-1 Draft intern advice aspect 1"/>
+      <arc id="2508243337360" source="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T11 Create document X request unlicensed"/>
+      <arc id="2508243339600" source="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T13 Adjust document X request unlicensed"/>
+      <arc id="2508243341840" source="T07-2 Draft intern advice aspect 2" target="({'T07-2 Draft intern advice aspect 2'}, {'T08 Draft and send request for advice', 'T10 Determine necessity to stop indication'})"/>
+      <arc id="2508243348048" source="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T16 Report reasons to hold request'})" target="T12 Check document X request unlicensed"/>
+      <arc id="2508243507920" source="({'T19 Determine report Y to stop indication'}, {'T20 Print report Y to stop indication'})" target="T20 Print report Y to stop indication"/>
+      <arc id="2508243410128" source="start" target="T12 Check document X request unlicensed"/>
+      <arc id="2508243350800" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T17 Check report Y to stop indication'})"/>
+      <arc id="2508243342864" source="T07-4 Draft internal advice to hold for type 4" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})"/>
+      <arc id="2508243345104" source="T09-4 Process or receive external advice from party 4" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt'}, {'T10 Determine necessity to stop indication'})"/>
+      <arc id="2508243515152" source="({'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})" target="T05 Print and send confirmation of receipt"/>
+      <arc id="2508243347344" source="({'T08 Draft and send request for advice'}, {'T09-1 Process or receive external advice from party 1', 'T09-4 Process or receive external advice from party 4'})" target="T09-4 Process or receive external advice from party 4"/>
+      <arc id="2508243506960" source="Confirmation of receipt" target="({'T12 Check document X request unlicensed', 'Confirmation of receipt'}, {'T04 Determine confirmation of receipt'})"/>
+      <arc id="2508243403536" source="start" target="T09-1 Process or receive external advice from party 1"/>
+      <arc id="2508243418384" source="start" target="T07-2 Draft intern advice aspect 2"/>
+      <arc id="2508243409680" source="start" target="T04 Determine confirmation of receipt"/>
+      <arc id="2508243415312" source="start" target="T15 Print document X request unlicensed"/>
+      <arc id="2508243403024" source="start" target="T17 Check report Y to stop indication"/>
+      <arc id="2508243406608" source="T07-1 Draft intern advice aspect 1" target="end"/>
+      <arc id="2508243504912" source="T07-4 Draft internal advice to hold for type 4" target="end"/>
+      <arc id="2508243509008" source="T09-1 Process or receive external advice from party 1" target="({'T09-1 Process or receive external advice from party 1'}, {'T07-3 Draft intern advice hold for aspect 3'})"/>
+      <arc id="2508243513104" source="({'T14 Determine document X request unlicensed'}, {'T15 Print document X request unlicensed'})" target="T15 Print document X request unlicensed"/>
+      <arc id="2508243345616" source="T07-4 Draft internal advice to hold for type 4" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt'}, {'T10 Determine necessity to stop indication'})"/>
+      <arc id="2508243351824" source="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T19 Determine report Y to stop indication'})" target="T12 Check document X request unlicensed"/>
+      <arc id="2508243349584" source="T12 Check document X request unlicensed" target="({'T12 Check document X request unlicensed', 'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T02 Check confirmation of receipt'})"/>
+      <arc id="2508243347856" source="({'T08 Draft and send request for advice'}, {'T09-1 Process or receive external advice from party 1', 'T09-4 Process or receive external advice from party 4'})" target="T09-1 Process or receive external advice from party 1"/>
+      <arc id="2508243337680" source="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T07-4 Draft internal advice to hold for type 4"/>
+      <arc id="2508243272144" source="T12 Check document X request unlicensed" target="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T04 Determine confirmation of receipt'})"/>
+      <arc id="2508243343888" source="T07-2 Draft intern advice aspect 2" target="({'T07-2 Draft intern advice aspect 2'}, {'T09-1 Process or receive external advice from party 1', 'T10 Determine necessity to stop indication'})"/>
+      <arc id="2508243350096" source="({'T10 Determine necessity to stop indication'}, {'T19 Determine report Y to stop indication', 'T11 Create document X request unlicensed'})" target="T19 Determine report Y to stop indication"/>
+      <arc id="2508243346128" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication'}, {'T17 Check report Y to stop indication', 'T11 Create document X request unlicensed'})"/>
+      <arc id="2508243350608" source="({'T10 Determine necessity to stop indication'}, {'T19 Determine report Y to stop indication', 'T11 Create document X request unlicensed'})" target="T11 Create document X request unlicensed"/>
+      <arc id="2508243340432" source="({'T08 Draft and send request for advice', 'T09-2 Process or receive external advice from party 2'}, {'T09-4 Process or receive external advice from party 4'})" target="T09-4 Process or receive external advice from party 4"/>
+      <arc id="2508243406672" source="T06 Determine necessity of stop advice" target="end"/>
+      <arc id="2508243510096" source="T09-3 Process or receive external advice from party 3" target="({'T09-3 Process or receive external advice from party 3'}, {'T09-1 Process or receive external advice from party 1'})"/>
+      <arc id="2508243506512" source="({'T17 Check report Y to stop indication'}, {'T19 Determine report Y to stop indication'})" target="T19 Determine report Y to stop indication"/>
+      <arc id="2508243404624" source="T12 Check document X request unlicensed" target="end"/>
+      <arc id="2508243515216" source="({'Confirmation of receipt'}, {'T07-2 Draft intern advice aspect 2', 'T04 Determine confirmation of receipt'})" target="T07-2 Draft intern advice aspect 2"/>
+      <arc id="2508243511120" source="T20 Print report Y to stop indication" target="({'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243507536" source="({'T16 Report reasons to hold request'}, {'T19 Determine report Y to stop indication'})" target="T19 Determine report Y to stop indication"/>
+      <arc id="2508243516240" source="T17 Check report Y to stop indication" target="({'T17 Check report Y to stop indication'}, {'T20 Print report Y to stop indication'})"/>
+      <arc id="2508243508560" source="T19 Determine report Y to stop indication" target="({'Confirmation of receipt', 'T19 Determine report Y to stop indication'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243501328" source="T18 Adjust report Y to stop indicition" target="end"/>
+      <arc id="2508243345936" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T16 Report reasons to hold request'})"/>
+      <arc id="2508243512016" source="({'T11 Create document X request unlicensed'}, {'T14 Determine document X request unlicensed'})" target="T14 Determine document X request unlicensed"/>
+      <arc id="2508243348688" source="({'T10 Determine necessity to stop indication'}, {'T17 Check report Y to stop indication', 'T11 Create document X request unlicensed'})" target="T17 Check report Y to stop indication"/>
+      <arc id="2508243350928" source="T10 Determine necessity to stop indication" target="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T19 Determine report Y to stop indication'})"/>
+      <arc id="2508243340752" source="T09-2 Process or receive external advice from party 2" target="({'T08 Draft and send request for advice', 'T09-2 Process or receive external advice from party 2'}, {'T09-4 Process or receive external advice from party 4'})"/>
+      <arc id="2508243351440" source="({'T12 Check document X request unlicensed'}, {'T14 Determine document X request unlicensed', 'T02 Check confirmation of receipt'})" target="T02 Check confirmation of receipt"/>
+      <arc id="2508243408784" source="T05 Print and send confirmation of receipt" target="end"/>
+      <arc id="2508243511184" source="T11 Create document X request unlicensed" target="({'T11 Create document X request unlicensed'}, {'T14 Determine document X request unlicensed'})"/>
+      <arc id="2508243408272" source="start" target="T03 Adjust confirmation of receipt"/>
+      <arc id="2508243405712" source="T02 Check confirmation of receipt" target="end"/>
+      <arc id="2508243403152" source="T14 Determine document X request unlicensed" target="end"/>
+      <arc id="2508243514256" source="({'T16 Report reasons to hold request'}, {'T17 Check report Y to stop indication'})" target="T17 Check report Y to stop indication"/>
+      <arc id="2508243404176" source="T17 Check report Y to stop indication" target="end"/>
+      <arc id="2508243504528" source="T02 Check confirmation of receipt" target="({'T19 Determine report Y to stop indication', 'T02 Check confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243512208" source="({'T20 Print report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})" target="T05 Print and send confirmation of receipt"/>
+      <arc id="2508243513744" source="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T08 Draft and send request for advice"/>
+      <arc id="2508243347472" source="({'T13 Adjust document X request unlicensed', 'T11 Create document X request unlicensed'}, {'T12 Check document X request unlicensed'})" target="T12 Check document X request unlicensed"/>
+      <arc id="2508243339536" source="({'T12 Check document X request unlicensed', 'T20 Print report Y to stop indication', 'Confirmation of receipt'}, {'T02 Check confirmation of receipt'})" target="T02 Check confirmation of receipt"/>
+      <arc id="2508243272272" source="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T04 Determine confirmation of receipt'})" target="T04 Determine confirmation of receipt"/>
+      <arc id="2508243344016" source="({'T07-2 Draft intern advice aspect 2'}, {'T09-1 Process or receive external advice from party 1', 'T10 Determine necessity to stop indication'})" target="T10 Determine necessity to stop indication"/>
+      <arc id="2508243350224" source="({'T10 Determine necessity to stop indication', 'T13 Adjust document X request unlicensed'}, {'T12 Check document X request unlicensed'})" target="T12 Check document X request unlicensed"/>
+      <arc id="2508243340048" source="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T17 Check report Y to stop indication'})" target="T17 Check report Y to stop indication"/>
+      <arc id="2508243502160" source="T19 Determine report Y to stop indication" target="({'T19 Determine report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243272784" source="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T04 Determine confirmation of receipt'})" target="T15 Print document X request unlicensed"/>
+      <arc id="2508243344528" source="({'T07-2 Draft intern advice aspect 2'}, {'T09-1 Process or receive external advice from party 1', 'T10 Determine necessity to stop indication'})" target="T09-1 Process or receive external advice from party 1"/>
+      <arc id="2508243352976" source="({'T12 Check document X request unlicensed'}, {'T14 Determine document X request unlicensed', 'T02 Check confirmation of receipt'})" target="T14 Determine document X request unlicensed"/>
+      <arc id="2508243342800" source="({'T07-2 Draft intern advice aspect 2'}, {'T08 Draft and send request for advice', 'T10 Determine necessity to stop indication'})" target="T08 Draft and send request for advice"/>
+      <arc id="2508243341072" source="T08 Draft and send request for advice" target="({'T08 Draft and send request for advice', 'T09-2 Process or receive external advice from party 2'}, {'T09-4 Process or receive external advice from party 4'})"/>
+      <arc id="2508243347280" source="({'T10 Determine necessity to stop indication'}, {'T12 Check document X request unlicensed', 'T16 Report reasons to hold request'})" target="T16 Report reasons to hold request"/>
+      <arc id="2508243517392" source="T19 Determine report Y to stop indication" target="({'T19 Determine report Y to stop indication'}, {'T20 Print report Y to stop indication'})"/>
+      <arc id="2508243502544" source="T16 Report reasons to hold request" target="end"/>
+      <arc id="2508243409872" source="start" target="T09-3 Process or receive external advice from party 3"/>
+      <arc id="2508243413456" source="start" target="T06 Determine necessity of stop advice"/>
+      <arc id="2508243504080" source="({'T02 Check confirmation of receipt'}, {'T16 Report reasons to hold request'})" target="T16 Report reasons to hold request"/>
+      <arc id="2508243512272" source="T14 Determine document X request unlicensed" target="({'T14 Determine document X request unlicensed'}, {'T15 Print document X request unlicensed'})"/>
+      <arc id="2508243504592" source="T02 Check confirmation of receipt" target="({'T02 Check confirmation of receipt'}, {'T16 Report reasons to hold request'})"/>
+      <arc id="2508243501520" source="({'T19 Determine report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})" target="T05 Print and send confirmation of receipt"/>
+      <arc id="2508243503568" source="T04 Determine confirmation of receipt" target="({'T20 Print report Y to stop indication', 'T04 Determine confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})"/>
+      <arc id="2508243502032" source="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T13 Adjust document X request unlicensed"/>
+      <arc id="2508243351760" source="T12 Check document X request unlicensed" target="({'T12 Check document X request unlicensed'}, {'T15 Print document X request unlicensed', 'T02 Check confirmation of receipt'})"/>
+      <arc id="2508243503696" source="({'T19 Determine report Y to stop indication', 'T02 Check confirmation of receipt'}, {'T05 Print and send confirmation of receipt'})" target="T05 Print and send confirmation of receipt"/>
+      <arc id="2508243339856" source="({'T05 Print and send confirmation of receipt'}, {'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T09-3 Process or receive external advice from party 3', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})" target="T09-3 Process or receive external advice from party 3"/>
+      <arc id="2508243346064" source="Confirmation of receipt" target="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt'}, {'T10 Determine necessity to stop indication'})"/>
+      <arc id="2508243505936" source="T07-3 Draft intern advice hold for aspect 3" target="({'T05 Print and send confirmation of receipt', 'T07-3 Draft intern advice hold for aspect 3'}, {'T07-4 Draft internal advice to hold for type 4'})"/>
+      <arc id="2508243348304" source="T13 Adjust document X request unlicensed" target="({'T13 Adjust document X request unlicensed', 'T11 Create document X request unlicensed'}, {'T12 Check document X request unlicensed'})"/>
+      <arc id="2508243405904" source="T10 Determine necessity to stop indication" target="end"/>
+      <arc id="2508243340368" source="({'T07-4 Draft internal advice to hold for type 4', 'T09-4 Process or receive external advice from party 4', 'Confirmation of receipt', 'T09-3 Process or receive external advice from party 3'}, {'T07-2 Draft intern advice aspect 2'})" target="T07-2 Draft intern advice aspect 2"/>
+      <arc id="2508243516624" source="T05 Print and send confirmation of receipt" target="({'T05 Print and send confirmation of receipt'}, {'T08 Draft and send request for advice', 'T13 Adjust document X request unlicensed', 'T16 Report reasons to hold request', 'T11 Create document X request unlicensed', 'T07-4 Draft internal advice to hold for type 4'})"/>
+      <arc id="2508243344848" source="({'T10 Determine necessity to stop indication'}, {'T16 Report reasons to hold request', 'T11 Create document X request unlicensed'})" target="T11 Create document X request unlicensed"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="end">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>
