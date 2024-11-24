@@ -1,11 +1,9 @@
 import pm4py
-import import_t 
 
 
 def generate_dotted_chart(event_log):
-
     try:
-        pm4py.view_dotted_chart(event_log, format="png", bgcolor= "white",show_legend=True)
+        pm4py.view_dotted_chart(event_log, format="png", bgcolor="white", show_legend=True)
         print("Dotted chart.")
     except Exception as e:
         print("Failed to generate the dotted chart:", e)
@@ -21,7 +19,6 @@ def generate_petri_netz(event_log):
 
 
 def generate_process_tree(event_log):
-
     try:
         process_tree = pm4py.discover_process_tree_inductive(event_log)
         bpmn_model = pm4py.convert_to_bpmn(process_tree)
@@ -31,14 +28,17 @@ def generate_process_tree(event_log):
 
 
 if __name__ == "__main__":
+    file_path = "Project_code/running-example.xes"  
 
-    file_path = "Project_code/running-example.csv"
 
-    event_log = import_t.import_csv(file_path)
+    event_log = pm4py.read_xes(file_path)  
 
-    #process tree 
+    # Process tree 
     generate_process_tree(event_log)
-    #Petri_netz
+
+    # Petri net
     generate_petri_netz(event_log)
-    #Dotted_chart
+
+    # Dotted chart
     generate_dotted_chart(event_log)
+

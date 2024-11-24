@@ -39,4 +39,4 @@ def generate_performance_spectrum(file_path):
 
 
 
-generate_performance_spectrum('Project_code/receipt.xes')
+generate_performance_spectrum('Project_code/test.xes')
