@@ -11,9 +11,10 @@ import tkinter as tk
 import dotted_chart_petri_bpmn as dottedpetri
 from tkinter import ttk
 from tkinter import filedialog
+import performance_spectrum
+from tkinter import messagebox
 
 
-#file_path = r"C:\AAA\RWTH\Sem 7\SPP\Conformance-Checking-Visualizations\Project_code\receipt.csv"
 file_path = None
 root = tk.Tk()
 root.title ("Implementation of Process Mining Visualizations for Conformance Checking")
@@ -68,7 +69,7 @@ style.configure (
 
 dropdown_var = tk.StringVar(value="Choose")
 dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox"  )
-dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Process Tree', 'Activity Interaction Network', 'Conformance Heatmap', 'Semantic Conformance Word Cloud']
+dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Performance Spectrum', 'Process Tree', 'Activity Interaction Network', 'Conformance Heatmap', 'Semantic Conformance Word Cloud']
 dropdown.pack(pady=40)
 
 
@@ -79,7 +80,14 @@ def generate_visualization():
     elif (buttonname ==  "Dotted Chart"):
         dottedpetri.generate_dotted_chart(import_t.import_csv(file_path))
     elif (buttonname ==  "Performance Spectrum"):
-        dottedpetri.generate_dotted_chart(import_t.import_csv(file_path))
+       performance_spectrum.generate_performance_spectrum(file_path)
+    elif (buttonname =="Activity Interaction Network"):
+        messagebox.showwarning("Warning", "This visualization isn't implemented yet")
+    elif (buttonname == "Conformance Heatmap"):
+        messagebox.showwarning("Warning", "This visualization isn't implemented yet")
+    elif (buttonname== "Semantic Conformance Word Cloud"):
+        messagebox.showwarning("Warning", "This visualization isn't implemented yet")
+
 
 
 
