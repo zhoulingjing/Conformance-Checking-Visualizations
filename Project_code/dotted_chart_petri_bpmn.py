@@ -1,7 +1,6 @@
 import pm4py
 from import_t import import_csv
 from pm4py.algo.conformance.tokenreplay import algorithm as token_replay
-from pm4py.algo.filtering.pandas import timestamp_filter
 
 
 
