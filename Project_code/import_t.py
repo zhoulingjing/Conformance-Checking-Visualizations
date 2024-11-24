@@ -31,5 +31,5 @@ def import_csv(file_path):
 
 
 if __name__ == "__main__":
-    file_path = r"E:\Conformance-Checking-Visualizations\Project_code\receipt.csv"
+    file_path = "Project_code/receipt.csv"
     event_log = import_csv(file_path)

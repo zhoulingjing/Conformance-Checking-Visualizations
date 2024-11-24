@@ -1,7 +1,5 @@
 import pm4py
-from import_t import import_csv
-from pm4py.algo.conformance.tokenreplay import algorithm as token_replay
-
+import import_t 
 
 
 def generate_dotted_chart(event_log):
@@ -34,9 +32,9 @@ def generate_process_tree(event_log):
 
 if __name__ == "__main__":
 
-    file_path = r"E:\Conformance-Checking-Visualizations\Project_code\running-example.csv"
+    file_path = "Project_code/running-example.csv"
 
-    event_log = import_csv(file_path)
+    event_log = import_t.import_csv(file_path)
 
     #process tree 
     generate_process_tree(event_log)
