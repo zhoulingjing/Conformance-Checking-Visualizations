@@ -25,7 +25,13 @@ def get_unique_activities(event_log):
 
 
 def get_unique_time(time):
-    return list(set(time))
+    times = []
+    for i in time:
+        if i in times:
+            continue
+        else:
+            times.append(i)
+    return times
 
 
 
@@ -97,26 +103,35 @@ def Temporal_Behavior_Patterns(event_log, time_format):
     figure, axs = plt.subplots(figsize=(12,6))
 
     unique_activities = get_unique_activities(event_log)
-    colors = plt.cm.tab20.colors  # Use a colormap with distinct colors
+    colors = plt.cm.tab20.colors 
     color_map = {activity: colors[i % len(colors)] for i, activity in enumerate(unique_activities)}
 
     sorted_time = sort_time(event_log,time_format)
     unique_time = get_unique_time(sorted_time)
+    plotted_activities = [] 
+    
     for time in unique_time:
         x = []
         y = []
-        activities = match_activity(event_log,time)
+        activities = match_activity(event_log, time)
         x = [time]
         for activity, frequency in activities.items():
             y.append(frequency)
-            plt.plot(x,y,'o', color=color_map[activity],label=activity)
+            if activity not in plotted_activities:
+                plt.plot(x, y, 'o', color=color_map[activity], label=activity)
+                plotted_activities.append(activity)
+            else:
+                plt.plot(x, y, 'o', color=color_map[activity])
+            
             y.remove(frequency)
+    
     plt.legend(loc='upper left', bbox_to_anchor=(1, 1), title="Activities")
     plt.xlabel('Time')
     plt.ylabel('Frequency')
+    plt.tight_layout()
     plt.show()
         
-event_log = pm4py.read_xes('Testing/running-example.xes')    
-Temporal_Behavior_Patterns(event_log,time_format='hours')
+event_log = pm4py.read_xes('Testing/receipt.xes')    
+Temporal_Behavior_Patterns(event_log,time_format='years')
 
 
