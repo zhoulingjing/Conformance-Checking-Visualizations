@@ -6,6 +6,22 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
+'''
+The code processes the event log to extract the sequence of activities (concept:name) for each case_id.
+By iterating through the activity sequences, the code determines direct transitions (order of activities).
+The code calculates the frequency of each transition across all cases and uses it to set edge thickness in the visualization.
+
+Nodes are created for all unique activities in the event log (extracted from the concept:name column).
+Directed edges are added to represent transitions between activities, determined from the sequential flow of each case in the event log.
+
+Edge thickness:
+The thickness of edges is proportional to the frequency of transitions between activities.
+This allows users to identify the most common paths in the process.
+Edge color:
+(We still don't get the comfarmance score)
+
+The network highlights the relationships between activities (via edges) and the prominence of activities (via node size).
+'''
 
 def convert_to_event_log(file_path): 
     """
