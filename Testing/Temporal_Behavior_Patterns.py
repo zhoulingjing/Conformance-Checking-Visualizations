@@ -1,29 +1,25 @@
 import pm4py
-import pandas
+import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.dates import DateFormatter
 from datetime import datetime
 from matplotlib.pyplot import cm
-import numpy as np 
+import colorsys
 
-
-
+#calculate frecuency of each activity
 def calc_frequency(event_log):
     frequencies = {}
     for activity in event_log['concept:name']:
         if activity in frequencies.keys():
             frequencies[activity] += 1
         else:
-            frequencies.update({activity : 1})
+            frequencies.update({activity: 1})
     return frequencies
 
-
-
+#get all unique activities
 def get_unique_activities(event_log):
     return list(set(event_log['concept:name']))
 
-
-
+#get unique timestamps
 def get_unique_time(time):
     times = []
     for i in time:
@@ -33,26 +29,24 @@ def get_unique_time(time):
             times.append(i)
     return times
 
-
-
-
-def sort_time(event_log,time_format):
+#sort time in chronological order
+def sort_time(event_log, time_format):
     match time_format:
         case 'months':
             months = {
-                    'Jan': 0,
-                    'Feb': 1,
-                    'Mar': 2,
-                    'Apr': 3,
-                    'May': 4,
-                    'Jun': 5,
-                    'Jul': 6,
-                    'Aug': 7,
-                    'Sep': 8,
-                    'Oct': 9,
-                    'Nov': 10,
-                    'Dec': 11,
-                }
+                'Jan': 0,
+                'Feb': 1,
+                'Mar': 2,
+                'Apr': 3,
+                'May': 4,
+                'Jun': 5,
+                'Jul': 6,
+                'Aug': 7,
+                'Sep': 8,
+                'Oct': 9,
+                'Nov': 10,
+                'Dec': 11,
+            }
             return sorted(event_log['time:timestamp'], key=months.get)
         case 'days':
             days = {
@@ -64,74 +58,86 @@ def sort_time(event_log,time_format):
                 'Saturday': 6,
                 'Sunday': 7,
             }
-            return sorted(event_log['time:timestamp'], key= days.get)
+            return sorted(event_log['time:timestamp'], key=days.get)
 
         case 'hours':
             return sorted(event_log['time:timestamp'], key=lambda x: datetime.strptime(x, "%H:%M").time())
-        
+
         case 'years':
             return sorted(event_log['time:timestamp'], key=int)
 
-
-
-def process_timestamp(event_log,time_format):
-    event_log['time:timestamp'] = pandas.to_datetime(event_log['time:timestamp'])
+#change timestamp based on the given time_format
+def process_timestamp(event_log, time_format):
+    event_log['time:timestamp'] = pd.to_datetime(event_log['time:timestamp'])
     match time_format:
-        case 'hours':  # Group by hours of a single day
+        case 'hours':
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.strftime("%H:00")
-            
-        case 'days':  # Group by days of a single month
+
+        case 'days':
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.strftime("%A")
 
-        case 'months':  # Group by months of a single year
+        case 'months':
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.strftime("%b")
 
-        case 'years':  # Group by years (unchanged)
+        case 'years':
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.strftime("%Y")
     return event_log
 
-
+#for a given target_time give frequency of all activities that happen at that time
 def match_activity(event_log, target_time):
     matched_activities = event_log[event_log['time:timestamp'] == target_time]
-    frecuencies = calc_frequency(matched_activities)
-    return frecuencies
+    frequencies = calc_frequency(matched_activities)
+    return frequencies
+
+#generate colors for different activities
+def generate_color(index, total):
+    hue = index / total  # Evenly spaced hues
+    saturation = 0.8     # High saturation for vibrant colors
+    value = 0.9          # High brightness
+    return colorsys.hsv_to_rgb(hue, saturation, value)
 
 
-
-def Temporal_Behavior_Patterns(event_log, time_format):
-    event_log = process_timestamp(event_log,time_format)
-    figure, axs = plt.subplots(figsize=(12,6))
+def generate_Temporal_Behavior_Chart(event_log, time_format):
+    event_log = process_timestamp(event_log, time_format)
+    figure, axs = plt.subplots(figsize=(12, 6))
 
     unique_activities = get_unique_activities(event_log)
-    colors = plt.cm.tab20.colors 
-    color_map = {activity: colors[i % len(colors)] for i, activity in enumerate(unique_activities)}
+    color_map = {activity: generate_color(i, len(unique_activities)) for i, activity in enumerate(unique_activities)}
 
-    sorted_time = sort_time(event_log,time_format)
+    sorted_time = sort_time(event_log, time_format)
     unique_time = get_unique_time(sorted_time)
-    plotted_activities = [] 
-    
+    plotted_activities = []
+
+    # Collect frequency data for dotted lines
+    activity_frequency_over_time = {activity: [] for activity in unique_activities}
+
     for time in unique_time:
-        x = []
-        y = []
         activities = match_activity(event_log, time)
         x = [time]
-        for activity, frequency in activities.items():
-            y.append(frequency)
+        for activity in unique_activities:
+            frequency = activities.get(activity, 1)
+            activity_frequency_over_time[activity].append(frequency)
+            y = frequency 
             if activity not in plotted_activities:
                 plt.plot(x, y, 'o', color=color_map[activity], label=activity)
                 plotted_activities.append(activity)
             else:
                 plt.plot(x, y, 'o', color=color_map[activity])
-            
-            y.remove(frequency)
-    
+
+    # Add dotted lines for each activity
+    for activity, frequencies in activity_frequency_over_time.items():
+        x_positions = range(len(unique_time))  # Map unique times to sequential indices
+        plt.plot(x_positions, frequencies, '--', color=color_map[activity], alpha=0.7)
+
+    # Configure the plot
+    plt.xticks(ticks=range(len(unique_time)), labels=unique_time, rotation=45)
     plt.legend(loc='upper left', bbox_to_anchor=(1, 1), title="Activities")
     plt.xlabel('Time')
     plt.ylabel('Frequency')
     plt.tight_layout()
     plt.show()
-        
-event_log = pm4py.read_xes('Testing/receipt.xes')    
-Temporal_Behavior_Patterns(event_log,time_format='years')
 
 
+# Load event log and generate chart
+event_log = pm4py.read_xes('Testing/receipt.xes')
+generate_Temporal_Behavior_Chart(event_log, time_format='days')
