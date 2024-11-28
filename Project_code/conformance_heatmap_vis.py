@@ -20,7 +20,6 @@ if __name__ == "__main__":
 
     # train model
     model, im, fm = pm4py.discover_petri_net_inductive(train_log)
-    print(test_log['case:concept:name'].unique())
     # make a ditionary of trace and time and fitness
     data = []
     for id in test_log['case:concept:name'].unique():
