@@ -1,8 +1,14 @@
 import pm4py
 import pandas
 from sklearn.model_selection import train_test_split
-
-def conformance(event_log):
+def conformance(event_log,conformance_algorithm,model):
+    if conformance_algorithm==None and model==None:
+        conformance_log(event_log)
+        return
+    # if model!=None:
+    #     if
+    
+def conformance_log(event_log):
     event_log = pandas.read_csv('receipt.csv')
     event_log = pm4py.format_dataframe(event_log,case_id='case:concept:name', activity_key='concept:name',timestamp_key='time:timestamp')
 
