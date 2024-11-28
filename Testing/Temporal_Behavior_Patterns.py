@@ -115,7 +115,7 @@ def generate_Temporal_Behavior_Chart(event_log, time_format):
         activities = match_activity(event_log, time)
         x = [time]
         for activity in unique_activities:
-            frequency = activities.get(activity, 1)
+            frequency = activities.get(activity, 0)
             activity_frequency_over_time[activity].append(frequency)
             y = frequency 
             if activity not in plotted_activities:
@@ -139,5 +139,5 @@ def generate_Temporal_Behavior_Chart(event_log, time_format):
 
 
 # Load event log and generate chart
-event_log = pm4py.read_xes('Testing/receipt.xes')
+event_log = pm4py.read_xes('Testing/BPI_Challenge_2019.xes')
 generate_Temporal_Behavior_Chart(event_log, time_format='days')
