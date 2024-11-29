@@ -1,12 +1,35 @@
 import pm4py
+import os
 import pandas
 from sklearn.model_selection import train_test_split
-def conformance(event_log,conformance_algorithm,model):
-    if conformance_algorithm==None and model==None:
+def conformance(event_log,conformance_algorithm=None,model_path=None):
+    if conformance_algorithm==None and model_path==None:
         conformance_log(event_log)
         return
-    # if model!=None:
-    #     if
+    
+    model=[]
+    if model_path!=None:
+        type=os.path.splitext(model_path)
+        
+        if type[1]==".pnml":
+            model = pm4py.read.read_pnml(model_path)
+        elif type[1]==".bpmn":
+            model[0] = pm4py.read_bpmn(model_path)
+        elif type[1]==".dfg":
+            model[0] =pm4py.read_dfg(model_path)
+        elif type[1]=="ptml":
+            model[0]= pm4py.read_ptml(model_path)
+        else:
+            raise TypeError
+        
+    if conformance_algorithm!=None:
+        if conformance_algorithm=='conformance_diagnostics_alignments' or conformance_algorithm=='conformance diagnostics alignments' or conformance_algorithm=='cda':
+            pm4py.conformance.conformance_diagnostics_alignments(event_log,model)
+        elif conformance_algorithm == 'conformance_diagnostics_token_based_replay' or conformance_algorithm == 'conformance diagnostics token based replay' or conformance_algorithm=='cdtbr':
+            pm4py.conformance_diagnostics_token_based_replay(event_log, model)
+    
+        
+    
     
 def conformance_log(event_log):
     event_log = pandas.read_csv('receipt.csv')

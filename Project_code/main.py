@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib as mlib
 import pandas as pd
 import sequence_emb_conf
-import senantic_conformance_word
+import Project_code.semantic_conformance_word as semantic_conformance_word
 import import_t
 import conformance_heatmap_vis
 import activity_interaction_network
