@@ -139,5 +139,5 @@ def generate_Temporal_Behavior_Chart(event_log, time_format):
 
 
 # Load event log and generate chart
-event_log = pm4py.read_xes('Testing/BPI_Challenge_2019.xes')
-generate_Temporal_Behavior_Chart(event_log, time_format='days')
+event_log = pm4py.read_xes('Testing/running-example.xes')
+generate_Temporal_Behavior_Chart(event_log, time_format='months')
