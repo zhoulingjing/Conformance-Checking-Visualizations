@@ -113,8 +113,6 @@ def convert_to_dataframe(file_path):
 
 
 def generate_Temporal_Behavior_Chart(file_path, time_format):
-    plt.clf()  # Clear the current figure
-    plt.figure()  # Create a new figure
     
     event_log = convert_to_dataframe(file_path)
     event_log = process_timestamp(event_log, time_format)
