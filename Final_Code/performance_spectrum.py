@@ -59,6 +59,7 @@ def generate_performance_spectrum(file_path, output_dir):
     # Generate and save the performance spectrum
     try:
         output_path = os.path.join(output_dir, "performance_spectrum.png")
+        pm4py.view_performance_spectrum(event_log,activities, format="png")
         pm4py.save_vis_performance_spectrum(event_log, activities, output_path)
         print(f"Performance spectrum saved to {output_path}.")
     except Exception as e:
