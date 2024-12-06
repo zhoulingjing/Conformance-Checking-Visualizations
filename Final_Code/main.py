@@ -6,7 +6,7 @@ from tkinter import ttk, filedialog, messagebox
 import dotted_chart_petri_bpmn as dottedpetri
 import performance_spectrum
 import conformance_heatmap_vis
-import temporal_behavior_patterns
+import Temporal_Behavior_Patterns
 import activity_interaction_network
 
 file_path = None
@@ -98,7 +98,7 @@ def generate_visualization():
           else:
             conformance_heatmap_vis.generate_conformance_heatmap_with_time(file_path)
         elif buttonname == "Temporal Behavior Patterns Chart":
-            temporal_behavior_patterns.generate_Temporal_Behavior_Chart(file_path , "days")
+            Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path , "days")
         else:
             messagebox.showwarning("Warning", "Invalid option selected.")
     except Exception as e:
