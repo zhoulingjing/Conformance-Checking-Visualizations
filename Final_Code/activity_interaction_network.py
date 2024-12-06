@@ -118,7 +118,6 @@ for activity in longest_trace["concept:name"].unique():
         alignment_result = alignments.apply(activity_trace, model, im, fm)
         fitness = alignment_result[0]["fitness"]
         fitness_scores[activity] = fitness
-        print(f"Fitness for activity '{activity}': {fitness}")
     except Exception as e:
         print(f"Error calculating fitness for activity {activity}: {e}")
         fitness_scores[activity] = 0
