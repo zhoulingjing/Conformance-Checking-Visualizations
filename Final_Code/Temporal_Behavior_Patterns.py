@@ -155,5 +155,5 @@ def generate_Temporal_Behavior_Chart(file_path, time_format):
     plt.xlabel('Time')
     plt.ylabel('Frequency')
     plt.tight_layout()
-    plt.savefig('./Final_code/tbp.png', dpi=900)
+    plt.savefig('./Final_code/output_images/tbp.png', dpi=900)
     plt.show()

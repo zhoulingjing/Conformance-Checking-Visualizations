@@ -19,7 +19,7 @@ root.geometry("600x300")
 start_screen = tk.Frame(root, bg="lavender")
 vis_screen = tk.Frame(root, bg="white")
 
-output_dir = './Final_Code/'
+output_dir = './Final_Code/output_images'
 os.makedirs(output_dir, exist_ok=True)
 
 def go_to_start_screen():

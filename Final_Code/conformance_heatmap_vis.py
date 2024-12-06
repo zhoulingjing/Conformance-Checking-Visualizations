@@ -112,7 +112,7 @@ def generate_conformance_heatmap_with_time(file_path, coloring='YlGnBu', pnml_pa
 
         plt.tight_layout()
         
-        plt.savefig('./Final_Code/chcd.png')
+        plt.savefig('./Final_Code/output_images/chcd.png')
         plt.show()
 
     except Exception as e:

@@ -88,7 +88,7 @@ def visualize_activity_interaction_network(G, node_colors):
     ax.axis("off")
     
     plt.tight_layout()
-    plt.savefig('./Final_Code/ain.png')
+    plt.savefig('./Final_Code/output_images/ain.png')
     plt.show()
 
 def extract_longest_trace(event_log):
