@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 def generate_dotted_chart(event_log, output_dir):
     try:
         output_path = os.path.join(output_dir, "dotted_chart.png")
+        pm4py.view_dotted_chart(event_log, format="png", bgcolor="white", show_legend=True)
         pm4py.save_vis_dotted_chart(event_log, output_path)
         print(f"Dotted chart saved to {output_path}.")
     except Exception as e:
@@ -20,6 +21,7 @@ def generate_petri_net(event_log, output_dir):
         net, im, fm = pm4py.discover_petri_net_inductive(event_log, activity_key='concept:name',
                                                          case_id_key='case:concept:name',
                                                          timestamp_key='time:timestamp')
+        pm4py.view_petri_net(net, im, fm, format='png')
         output_path = os.path.join(output_dir, "petri_net.png")
         pm4py.save_vis_petri_net(net, im, fm, output_path)
         print(f"Petri net saved to {output_path}.")
@@ -33,6 +35,7 @@ def generate_bpmn(event_log, output_dir):
         process_tree = pm4py.discover_process_tree_inductive(event_log)
         bpmn_model = pm4py.convert_to_bpmn(process_tree)
         output_path = os.path.join(output_dir, "bpmn_model.png")
+        pm4py.view_bpmn(bpmn_model)
         pm4py.save_vis_bpmn(bpmn_model, output_path)
         print(f"BPMN model saved to {output_path}.")
     except Exception as e:
