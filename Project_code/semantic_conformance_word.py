@@ -1,48 +1,93 @@
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-import pandas as pd
+import pm4py
+from sklearn.model_selection import train_test_split
+
+
+def get_unique_variants(event_log):
+    traces = []
+    vars = pm4py.get_variants(event_log)
+    for trace in vars:
+        traces.append(trace)
+    return traces
+
 
 def calc_frequency(activities):
-    # Create an empty dictionary to store frequencies
     frequencies = {}
-    
-    # Iterate through each activity
     for activity in activities:
         if activity in frequencies:
-            # Increment the count if the activity is already in the dictionary
             frequencies[activity] += 1
         else:
-            # Initialize the count if the activity is not in the dictionary
             frequencies[activity] = 1
-    
     return frequencies
-def get_conformance_score(word):
-    # For demonstration: Higher frequency means higher conformance
-    return word.lower().count('request') 
 
-def color_by_conformance(word, *args, **kwargs):
-    conformance_score = get_conformance_score(word)  
+
+def find_sig_trace(event_log):
+    traces = get_unique_variants(event_log)
+    # model, im, fm = pm4py.discover_petri_net_inductive(event_log) 
+    trace_list = []
+    for trace in traces:
+            subset_trace = []
+            trace_length=0
+            for activity in trace:
+                subset_trace.append(activity)
+            trace_length=len(subset_trace)
+            trace_list.append({
+                "trace": trace,  # List of activities in the trace
+                "length": trace_length  # Length of the trace
+            })
+    longest_trace_dict = max(trace_list, key=lambda trace_dict: trace_dict["length"])
+    return longest_trace_dict["trace"]
+
+
+def get_conformance_score(word, trace):
+    return trace.count(word)
+
+
+def color_by_conformance(word, trace):
+    conformance_score = get_conformance_score(word, trace)
     if conformance_score > 1:
-        return 'blue'  
+        return 'blue'
     elif conformance_score == 1:
-        return 'green'  
+        return 'green'
     else:
-        return 'red' 
+        return 'red'
+
 
 def make_word_cloud(file_path):
-    df = pd.read_csv(file_path)
-    txt = ",".join(df['concept:name'].astype(str))
-    wc = WordCloud().generate(text=txt)
-    phrases = txt.split(",")
+    # Load the event log
+    event_log = pm4py.read_xes(file_path)
+    significant_trace = find_sig_trace(event_log)
     
+    # Load the CSV and process the text
+    df = pm4py.convert.convert_to_dataframe(event_log)
+    txt = ",".join(df['concept:name'].astype(str))
+    phrases = txt.split(",")
+
     # Count the frequency of each phrase
     phrase_counts = calc_frequency(phrases)
-    
-    # Generate the word cloud from frequencies
-    wc = WordCloud(background_color="white", colormap="viridis", width=800, height=400,color_func=color_by_conformance)
+
+    # Generate the word cloud
+    def custom_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+        return color_by_conformance(word, significant_trace)
+
+    wc = WordCloud(
+        background_color="white",
+        colormap="viridis",
+        width=800,
+        height=400,
+        color_func=custom_color_func
+    )
     word_cloud = wc.generate_from_frequencies(phrase_counts)
-    plt.imshow(word_cloud)
+
+    # Display the word cloud
+    plt.imshow(word_cloud, interpolation="bilinear")
     plt.axis("off")
+    plt.tight_layout()
+    plt.savefig('../images/scw.png') 
     plt.show()
 
-make_word_cloud(r'./running-example.csv')
+
+
+# Example usage
+make_word_cloud(r'./running-example.xes')
