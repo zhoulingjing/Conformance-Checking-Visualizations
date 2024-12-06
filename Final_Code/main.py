@@ -12,7 +12,7 @@ import activity_interaction_network
 file_path = None
 event_log = None
 
-# Initialize root window
+
 root = tk.Tk()
 root.title("Implementation of Process Mining Visualizations for Conformance Checking")
 root.geometry("600x300")

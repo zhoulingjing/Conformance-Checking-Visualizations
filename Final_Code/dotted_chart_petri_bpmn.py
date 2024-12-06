@@ -4,10 +4,6 @@ from pm4py.algo.conformance.tokenreplay import algorithm
 from sklearn.model_selection import train_test_split
 
 
-# Ensure the output directory exists
-
-
-
 # Generate and save a dotted chart
 def generate_dotted_chart(event_log, output_dir):
     try:

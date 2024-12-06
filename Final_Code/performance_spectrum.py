@@ -31,9 +31,7 @@ import pm4py
 
 
 def generate_performance_spectrum(file_path, output_dir):
-    # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
-    
     # Determine file type and read the event log
     type = os.path.splitext(file_path)
     if type[1] == '.xes':
