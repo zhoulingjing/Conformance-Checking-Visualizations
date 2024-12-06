@@ -111,9 +111,14 @@ def convert_to_dataframe(file_path):
 
     return event_log
 
+
 def generate_Temporal_Behavior_Chart(file_path, time_format):
+    plt.clf()  # Clear the current figure
+    plt.figure()  # Create a new figure
+    
     event_log = convert_to_dataframe(file_path)
     event_log = process_timestamp(event_log, time_format)
+
     figure, axs = plt.subplots(figsize=(12, 6))
 
     unique_activities = get_unique_activities(event_log)
@@ -150,8 +155,5 @@ def generate_Temporal_Behavior_Chart(file_path, time_format):
     plt.xlabel('Time')
     plt.ylabel('Frequency')
     plt.tight_layout()
+    plt.savefig('./Final_code/tbp.png', dpi=900)
     plt.show()
-
-
-# Load event log and generate chart
-generate_Temporal_Behavior_Chart("Final_Code/running-example.xes", time_format='days')
