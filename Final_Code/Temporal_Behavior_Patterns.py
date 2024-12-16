@@ -154,4 +154,4 @@ def generate_Temporal_Behavior_Chart(file_path, time_format):
 
 
 # Load event log and generate chart
-generate_Temporal_Behavior_Chart("Testing/running-example.xes", time_format='days')
+#generate_Temporal_Behavior_Chart("Testing/running-example.xes", time_format='days')

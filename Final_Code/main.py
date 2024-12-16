@@ -7,14 +7,15 @@ import senantic_conformance_word
 import import_t
 import conformance_heatmap_vis
 import activity_interaction_network
+import senantic_conformance_word
 import tkinter as tk
 import dotted_chart_petri_bpmn as dottedpetri
 from tkinter import ttk
 from tkinter import filedialog
 import performance_spectrum
 from tkinter import messagebox
-
-
+from Temporal_Behavior_Patterns import generate_Temporal_Behavior_Chart
+from conformance_heatmap_vis import generate_conformance_heatmap_with_time
 file_path = None
 root = tk.Tk()
 root.title ("Implementation of Process Mining Visualizations for Conformance Checking")
@@ -69,7 +70,7 @@ style.configure (
 
 dropdown_var = tk.StringVar(value="Choose")
 dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox"  )
-dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Performance Spectrum', 'Process Tree', 'Activity Interaction Network', 'Conformance Heatmap', 'Semantic Conformance Word Cloud']
+dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Performance Spectrum', 'Process Tree', 'Activity Interaction Network', 'Conformance Heatmap', 'Semantic Conformance Word Cloud', 'Temporal Behavior Patterns']
 dropdown.pack(pady=40)
 
 
@@ -86,9 +87,11 @@ def generate_visualization():
     elif (buttonname =="Activity Interaction Network"):
         messagebox.showwarning("Warning", "This visualization isn't implemented yet")
     elif (buttonname == "Conformance Heatmap"):
-        messagebox.showwarning("Warning", "This visualization isn't implemented yet")
+        generate_conformance_heatmap_with_time(file_path)
     elif (buttonname== "Semantic Conformance Word Cloud"):
         messagebox.showwarning("Warning", "This visualization isn't implemented yet")
+    elif (buttonname=="Temporal Behavior Patterns"):
+        generate_Temporal_Behavior_Chart(file_path, time_format='days')
 
 
 

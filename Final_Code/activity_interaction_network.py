@@ -1,8 +1,11 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
-from datetime import datetime
-from import_t import import_csv
+from matplotlib import cm
+import numpy as np
+import pm4py
+from pm4py.algo.conformance.alignments.petri_net import algorithm as alignments
+
 
 def calc_frequency(event_log):
     frequencies = {}
@@ -14,14 +17,7 @@ def calc_frequency(event_log):
     return frequencies
 
 
-
-def get_unique_activities(event_log):
-
-    return list(set(event_log['concept:name']))
-
-
 def extract_activity_transitions(event_log):
-
     transitions = []
     grouped = event_log.groupby("case:concept:name")
     for _, group in grouped:
@@ -35,10 +31,8 @@ def extract_activity_transitions(event_log):
 
 
 def generate_activity_interaction_network(event_log):
-
     transitions = extract_activity_transitions(event_log)
     activity_frequencies = calc_frequency(event_log)
-
 
     G = nx.DiGraph()
 
@@ -51,58 +45,79 @@ def generate_activity_interaction_network(event_log):
     return G
 
 
-def visualize_activity_interaction_network(G):
+def map_fitness_to_color(fitness_scores):
+    # Use a more vibrant color map like 'plasma' or 'coolwarm' for bolder colors
+    cmap = plt.colormaps.get_cmap("plasma")
+    norm = plt.Normalize(vmin=min(fitness_scores.values()), vmax=max(fitness_scores.values()))
+    return {activity: cmap(norm(score)) for activity, score in fitness_scores.items()}
 
-    plt.figure(figsize=(12, 8))
 
+def visualize_activity_interaction_network(G, node_colors):
+    fig, ax = plt.subplots(figsize=(14, 10))
+    pos = nx.spring_layout(G, k=0.3, seed=42)
     node_sizes = [G.nodes[node]["frequency"] * 50 for node in G.nodes]
+    edge_widths = [G[u][v]["frequency"] * 1.2 for u, v in G.edges()]
 
+    nx.draw_networkx_nodes(
+        G, pos, node_size=node_sizes, node_color=[node_colors.get(node, "gray") for node in G.nodes],
+        alpha=0.9, ax=ax
+    )
 
-    edge_widths = [G[u][v]["frequency"] / 2 for u, v in G.edges]
+    nx.draw_networkx_edges(
+        G, pos, width=edge_widths, edge_color="black", alpha=0.7, ax=ax
+    )
 
+    nx.draw_networkx_labels(
+        G, pos, font_size=12, font_color="darkblue", font_weight="bold", ax=ax
+    )
 
-    edge_colors = "black"
-    #we can add different colors for the edges later
+    sm = plt.cm.ScalarMappable(cmap="plasma", norm=plt.Normalize(vmin=0, vmax=1))  # Adjusted color map
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax)
+    cbar.set_label("Fitness", fontsize=14)
 
+    ax.set_title("Activity Interaction Network (AIN) with Conformance-Based Coloring", fontsize=16)
+    ax.axis("off")
 
-    pos = nx.spring_layout(G, seed=42)
-
-
-    nx.draw_networkx_nodes(G, pos, node_size=node_sizes, node_color="skyblue", alpha=0.8)
-    nx.draw_networkx_edges(G, pos, width=edge_widths, edge_color=edge_colors, alpha=0.7)
-    nx.draw_networkx_labels(G, pos, font_size=10, font_color="blue")
-
-    plt.title("Activity Interaction Network (AIN)")
-    plt.axis("off")
-
+    plt.tight_layout()
     plt.show()
 
 
-
 def extract_longest_trace(event_log):
-
     grouped = event_log.groupby("case:concept:name")
     trace_lengths = grouped.size()
-
     longest_trace_case = trace_lengths.idxmax()
-
     longest_trace = grouped.get_group(longest_trace_case)
     return longest_trace
 
-
-
-
-file_path = "running-example.csv"
+"""
+file_path = "receipt.csv"
 event_log = pd.read_csv(file_path)
 
-
-event_log["time:timestamp"] = pd.to_datetime(event_log["time:timestamp"], utc=True)
-
+event_log["time:timestamp"] = pd.to_datetime(event_log["time:timestamp"], errors="coerce", utc=True)
+event_log = event_log.dropna(subset=["time:timestamp"])
+event_log["case:concept:name"] = event_log["case:concept:name"].astype(str)
 
 longest_trace = extract_longest_trace(event_log)
 
-
 ain_graph = generate_activity_interaction_network(longest_trace)
 
+train_log = longest_trace
+model, im, fm = pm4py.discover_petri_net_inductive(train_log)
 
-visualize_activity_interaction_network(ain_graph)
+fitness_scores = {}
+for activity in longest_trace["concept:name"].unique():
+    activity_trace = longest_trace[longest_trace["concept:name"] == activity]
+    try:
+        alignment_result = alignments.apply(activity_trace, model, im, fm)
+        fitness = alignment_result[0]["fitness"]
+        fitness_scores[activity] = fitness
+        print(f"Fitness for activity '{activity}': {fitness}")
+    except Exception as e:
+        print(f"Error calculating fitness for activity {activity}: {e}")
+        fitness_scores[activity] = 0
+
+node_colors = map_fitness_to_color(fitness_scores)
+
+visualize_activity_interaction_network(ain_graph, node_colors)
+"""
