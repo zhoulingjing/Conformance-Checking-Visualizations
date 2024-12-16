@@ -138,5 +138,35 @@ if __name__ == "__main__":
         # Visualize and save the interaction graph
         visualize_interaction_graph(interaction_network)
 
+<<<<<<< Updated upstream
     except Exception as err:
         print("Error:", err)
+=======
+        # Generate Activity Interaction Network (AIN) graph
+        ain_graph = generate_activity_interaction_network(longest_trace)
+
+        # Discover Petri net model from the longest trace
+        train_log = longest_trace
+        model, im, fm = pm4py.discover_petri_net_inductive(train_log)
+
+        # Calculate fitness for edges
+        edge_fitness_scores = calculate_edge_fitness(longest_trace, model, im, fm)
+
+        # If no edge fitness scores are calculated, print a message
+        if not edge_fitness_scores:
+            print("No edge fitness scores were calculated. Ensure the transitions are valid.")
+
+        # Map edge fitness to colors
+        edge_colors = map_edge_fitness_to_color(edge_fitness_scores)
+
+        # Visualize the Activity Interaction Network with edge fitness coloring
+        visualize_activity_interaction_network_with_edge_fitness(ain_graph, edge_colors)
+
+    except Exception as e:
+        print(f"Error in generating AIN with edge fitness: {e}")
+
+
+# Example usage:
+#file_path = "Final_Code/running-example.xes"  # Update with your XES or CSV file path
+#generate_activity_interaction_network_with_edge_fitness(file_path)
+>>>>>>> Stashed changes
