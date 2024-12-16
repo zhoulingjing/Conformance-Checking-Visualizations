@@ -74,7 +74,7 @@ def process_timestamp(event_log, time_format):
         case 'hours':
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.round('60min')
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.strftime("%H:00")
-
+# 14:58 14pm
         case 'days':
             event_log['time:timestamp'] = event_log['time:timestamp'].dt.strftime("%A")
 
@@ -111,9 +111,12 @@ def convert_to_dataframe(file_path):
 
     return event_log
 
+
 def generate_Temporal_Behavior_Chart(file_path, time_format):
+    
     event_log = convert_to_dataframe(file_path)
     event_log = process_timestamp(event_log, time_format)
+
     figure, axs = plt.subplots(figsize=(12, 6))
 
     unique_activities = get_unique_activities(event_log)
@@ -132,7 +135,7 @@ def generate_Temporal_Behavior_Chart(file_path, time_format):
         for activity in unique_activities:
             frequency = activities.get(activity, 0)
             activity_frequency_over_time[activity].append(frequency)
-            y = frequency
+            y = frequency 
             if activity not in plotted_activities:
                 plt.plot(x, y, 'o', color=color_map[activity], label=activity)
                 plotted_activities.append(activity)
@@ -150,8 +153,5 @@ def generate_Temporal_Behavior_Chart(file_path, time_format):
     plt.xlabel('Time')
     plt.ylabel('Frequency')
     plt.tight_layout()
+    plt.savefig('./Final_code/output_images/tbp.png', dpi=900)
     plt.show()
-
-
-# Load event log and generate chart
-#generate_Temporal_Behavior_Chart("Testing/running-example.xes", time_format='days')

@@ -1,5 +1,6 @@
 import pandas as pd
 import pm4py
+import os
 """"
 @import_csv
 Imports and processes a CSV file containing event log data.
@@ -35,4 +36,3 @@ def import_csv(file_path):
         return event_log
     except Exception as e:
         print("An error occurred:", e)
-
