@@ -20,6 +20,8 @@ root.title("Implementation of Process Mining Visualizations for Conformance Chec
 root.geometry("600x300")
 start_screen = tk.Frame(root, bg="lavender")
 vis_screen = tk.Frame(root, bg="white")
+tbp_screen = tk.Frame (root, bg = "white")
+tbp_screen = tk.Frame(root, bg="white")
 
 output_dir = './Final_Code/output_images'
 os.makedirs(output_dir, exist_ok=True)
@@ -27,14 +29,20 @@ os.makedirs(output_dir, exist_ok=True)
 def go_to_start_screen():
     """Switch to the start screen."""
     vis_screen.pack_forget()
+    tbp_screen.pack_forget()
     start_screen.pack(fill="both", expand=True)
 
 
 def go_to_vis_screen():
     """Switch to the visualization screen."""
     start_screen.pack_forget()
+    tbp_screen.pack_forget()
     vis_screen.pack(fill="both", expand=True)
 
+def go_to_tbp_screen():
+    """Switch to the Temporal Behavior Patterns screen."""
+    vis_screen.pack_forget()
+    tbp_screen.pack(fill="both", expand=True)
 
 def upload_file():
     """Handle file upload and proceed to visualization screen."""
@@ -61,6 +69,15 @@ def convert_to_event_log(file_path):
         return pm4py.format_dataframe(df, case_id='case:concept:name', activity_key='concept:name', timestamp_key='time:timestamp')
     else:
         raise ValueError(f"Unsupported file type: {ext}")
+
+def generate_tbp_chart(time_format):
+    """Generate Temporal Behavior Patterns Chart based on the selected time format."""
+    try:
+        Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path, time_format)
+        messagebox.showinfo("Success", f"Temporal Behavior Patterns Chart generated with time format: {time_format}")
+        go_to_vis_screen()
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to generate Temporal Behavior Patterns Chart: {e}")
 
 
 def generate_visualization():
@@ -102,7 +119,9 @@ def generate_visualization():
           else:
             conformance_heatmap_vis.generate_conformance_heatmap_with_time(file_path)
         elif buttonname == "Temporal Behavior Patterns Chart":
-            Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path , "days")
+            go_to_tbp_screen()
+
+            #Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path , "days")
         else:
             messagebox.showwarning("Warning", "Invalid option selected.")
     except Exception as e:
@@ -158,6 +177,49 @@ button_go_to_start = tk.Button(
     font=("Helvetica", 10)
 )
 button_go_to_start.pack(pady=30)
+######
+# Temporal Behavior Patterns screen
+time_format_var = tk.StringVar(value="days")
+
+label_tbp = tk.Label(
+    tbp_screen,
+    text="Select Time Format for Temporal Behavior Patterns Chart",
+    font=("Helvetica", 14),
+    bg="white"
+)
+label_tbp.pack(pady=20)
+
+time_format_options = ["days", "hours", "months", "years"]
+for option in time_format_options:
+    tk.Radiobutton(
+        tbp_screen,
+        text=option.capitalize(),
+        variable=time_format_var,
+        value=option,
+        font=("Helvetica", 12),
+        bg="white"
+    ).pack(anchor="w", padx=50)
+
+button_generate_tbp = tk.Button(
+    tbp_screen,
+    text="Generate Chart",
+    command=lambda: generate_tbp_chart(time_format_var.get()),
+    bg="lightblue",
+    font=("Helvetica", 10)
+)
+button_generate_tbp.pack(pady=20)
+
+button_back_to_vis = tk.Button(
+    tbp_screen,
+    text="Back",
+    command=go_to_vis_screen,
+    bg="lavender",
+    font=("Helvetica", 10)
+)
+button_back_to_vis.pack(pady=10)
+
+
+####
 
 start_screen.pack(fill="both", expand=True)
 root.mainloop()
