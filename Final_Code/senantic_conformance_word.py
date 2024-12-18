@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import pm4py
 import matplotlib.colors as mcolors
 import numpy as np
+import os
+import pandas
 
 def get_unique_variants(event_log):
     """Extract unique trace variants from the event log."""
@@ -31,9 +33,23 @@ def color_by_conformance(word, trace, max_score):
     colormap = mcolors.LinearSegmentedColormap.from_list("conformance", ["red", "yellow", "green", "blue"])
     return mcolors.rgb2hex(colormap(normalized_score))
 
+
+def convert_to_dataframe(file_path):
+    type = os.path.splitext(file_path)
+    if type[1] == '.xes':
+        event_log = pm4py.read_xes(file_path)
+
+
+    elif type[1] == '.csv':
+        event_log = pandas.read_csv(file_path)
+        event_log = pm4py.format_dataframe(event_log, case_id='case:concept:name',activity_key='concept:name',timestamp_key='time:timestamp')
+
+    return event_log
+
+
 def make_word_cloud(file_path):
     # Load the event log
-    event_log = pm4py.read_xes(file_path)
+    event_log = convert_to_dataframe(file_path)
     significant_trace = find_sig_trace(event_log)
 
     # Process the log to extract activity names

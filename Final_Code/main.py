@@ -10,12 +10,11 @@ import Temporal_Behavior_Patterns
 
 import activity_interaction_network
 import senantic_conformance_word
-#from Final_Code.senantic_conformance_word import make_word_cloud
 
 file_path = None
 event_log = None
 
-# Initialize root window
+
 root = tk.Tk()
 root.title("Implementation of Process Mining Visualizations for Conformance Checking")
 root.geometry("600x300")
@@ -95,9 +94,9 @@ def generate_visualization():
         elif buttonname == "Conformance Heatmap with Concept Drift":
           if file_path and file_path.endswith(".csv"):
             messagebox.showwarning(
-            "Warning", 
+            "Warning",
             "For more detailed graphs, please use .xes files instead of .csv files.",
-            parent=root  
+            parent=root
         )
             conformance_heatmap_vis.generate_conformance_heatmap_with_time(file_path)
           else:
@@ -137,7 +136,7 @@ style.configure(
 )
 
 dropdown_var = tk.StringVar(value="Choose")
-dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox", width = 50)
+dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox", width=40)
 dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Performance Spectrum', 'bpmn', 'Activity Interaction Network',
                       'Conformance Heatmap with Concept Drift', 'Temporal Behavior Patterns Chart', 'Semantic Conformance Word Clouds']
 dropdown.pack(pady=40)
