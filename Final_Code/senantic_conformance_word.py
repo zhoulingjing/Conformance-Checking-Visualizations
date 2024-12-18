@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pm4py
 import matplotlib.colors as mcolors
 import numpy as np
-import os 
+import os
 import pandas
 
 def get_unique_variants(event_log):

@@ -7,16 +7,18 @@ import pm4py
 from pm4py.algo.conformance.alignments.petri_net import algorithm as alignments
 import os
 
-def convert_to_event_log(file_path): 
+
+def convert_to_event_log(file_path):
     """Convert a file (XES or CSV) to a PM4Py event log format."""
     file_extension = os.path.splitext(file_path)[1]
     if file_extension == '.xes':
         event_log = pm4py.read_xes(file_path)
     elif file_extension == '.csv':
         event_log = pd.read_csv(file_path)
-        event_log = pm4py.format_dataframe(event_log, case_id='case:concept:name', activity_key='concept:name', timestamp_key='time:timestamp')
+        event_log = pm4py.format_dataframe(event_log, case_id='case:concept:name', activity_key='concept:name',
+                                           timestamp_key='time:timestamp')
     return event_log
-        
+
 
 def calc_frequency(event_log):
     """Calculate the frequency of each activity in the event log."""
@@ -27,6 +29,7 @@ def calc_frequency(event_log):
         else:
             frequencies.update({activity: 1})
     return frequencies
+
 
 def extract_activity_transitions(event_log):
     """Extract transitions (edges) between activities from the event log."""
@@ -40,6 +43,7 @@ def extract_activity_transitions(event_log):
     transition_df = pd.DataFrame(transitions, columns=["source", "target"])
     transition_df = transition_df.groupby(["source", "target"]).size().reset_index(name="frequency")
     return transition_df
+
 
 def generate_activity_interaction_network(event_log):
     """Generate the Activity Interaction Network (AIN) from the event log."""
@@ -56,14 +60,16 @@ def generate_activity_interaction_network(event_log):
 
     return G
 
+
 def map_edge_fitness_to_color(edge_fitness_scores):
     """Map fitness scores to edge colors based on fitness values."""
     if not edge_fitness_scores:
         return {}  # If no edge fitness scores, return an empty dictionary
-    
+
     cmap = plt.colormaps.get_cmap("plasma")  # Use vibrant colormap
     norm = plt.Normalize(vmin=min(edge_fitness_scores.values()), vmax=max(edge_fitness_scores.values()))
     return {(source, target): cmap(norm(score)) for (source, target), score in edge_fitness_scores.items()}
+
 
 def calculate_edge_fitness(longest_trace, model, im, fm):
     """Calculate fitness for each edge in the activity interaction network."""
@@ -80,7 +86,8 @@ def calculate_edge_fitness(longest_trace, model, im, fm):
         target = longest_trace.iloc[i + 1]["concept:name"]
 
         try:
-            edge_trace = longest_trace[(longest_trace["concept:name"] == source) | (longest_trace["concept:name"] == target)]
+            edge_trace = longest_trace[
+                (longest_trace["concept:name"] == source) | (longest_trace["concept:name"] == target)]
             alignment_result = alignments.apply(edge_trace, model, im, fm)
             fitness = alignment_result[0]["fitness"]
             edge_fitness_scores[(source, target)] = fitness
@@ -89,6 +96,7 @@ def calculate_edge_fitness(longest_trace, model, im, fm):
             edge_fitness_scores[(source, target)] = 0  # Assign default fitness value of 0 in case of error
 
     return edge_fitness_scores
+
 
 def visualize_activity_interaction_network_with_edge_fitness(G, edge_fitness_scores):
     """Visualize the Activity Interaction Network with fitness-based coloring on edges."""
@@ -126,6 +134,7 @@ def visualize_activity_interaction_network_with_edge_fitness(G, edge_fitness_sco
     plt.savefig('./Final_Code/output_images/ain_with_edge_fitness.png')
     plt.show()
 
+
 def extract_longest_trace(event_log):
     """Extract the longest trace from the event log."""
     grouped = event_log.groupby("case:concept:name")
@@ -133,6 +142,7 @@ def extract_longest_trace(event_log):
     longest_trace_case = trace_lengths.idxmax()
     longest_trace = grouped.get_group(longest_trace_case)
     return longest_trace
+
 
 # Main function to generate the Activity Interaction Network with edge-level fitness coloring
 def generate_activity_interaction_network_with_edge_fitness(file_path):
@@ -175,7 +185,6 @@ def generate_activity_interaction_network_with_edge_fitness(file_path):
     except Exception as e:
         print(f"Error in generating AIN with edge fitness: {e}")
 
-
 # Example usage:
-#file_path = "Final_Code/running-example.xes"  # Update with your XES or CSV file path
-#generate_activity_interaction_network_with_edge_fitness(file_path)
+# file_path = "Final_Code/running-example.xes"  # Update with your XES or CSV file path
+# generate_activity_interaction_network_with_edge_fitness(file_path)
