@@ -10,7 +10,7 @@ import Temporal_Behavior_Patterns
 
 import activity_interaction_network
 import senantic_conformance_word
-from Final_Code.senantic_conformance_word import make_word_cloud
+#from Final_Code.senantic_conformance_word import make_word_cloud
 
 file_path = None
 event_log = None
@@ -91,7 +91,7 @@ def generate_visualization():
         elif buttonname == "Activity Interaction Network":
             activity_interaction_network.generate_activity_interaction_network_with_edge_fitness(file_path)
         elif buttonname == "Semantic Conformance Word Clouds":
-            make_word_cloud(file_path)
+            senantic_conformance_word.make_word_cloud(file_path)
         elif buttonname == "Conformance Heatmap with Concept Drift":
           if file_path and file_path.endswith(".csv"):
             messagebox.showwarning(
@@ -137,7 +137,7 @@ style.configure(
 )
 
 dropdown_var = tk.StringVar(value="Choose")
-dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox")
+dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox", width = 50)
 dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Performance Spectrum', 'bpmn', 'Activity Interaction Network',
                       'Conformance Heatmap with Concept Drift', 'Temporal Behavior Patterns Chart', 'Semantic Conformance Word Clouds']
 dropdown.pack(pady=40)
