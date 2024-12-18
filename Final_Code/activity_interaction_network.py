@@ -177,5 +177,5 @@ def generate_activity_interaction_network_with_edge_fitness(file_path):
 
 
 # Example usage:
-file_path = "Final_Code/running-example.xes"  # Update with your XES or CSV file path
-generate_activity_interaction_network_with_edge_fitness(file_path)
+#file_path = "Final_Code/running-example.xes"  # Update with your XES or CSV file path
+#generate_activity_interaction_network_with_edge_fitness(file_path)

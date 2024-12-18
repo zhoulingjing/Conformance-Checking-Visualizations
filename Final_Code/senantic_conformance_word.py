@@ -81,7 +81,8 @@ def make_word_cloud(file_path):
     # Adjust layout
     plt.subplots_adjust(wspace=0.1, right=0.9)
     plt.tight_layout()
+    plt.savefig('./Final_Code/output_images/semantic_conformance_word_cloud.png')
     plt.show()
 
 # Example usage
-make_word_cloud('Final_Code/running-example.xes')
+#make_word_cloud('Final_Code/running-example.xes')
