@@ -7,7 +7,9 @@ import dotted_chart_petri_bpmn as dottedpetri
 import performance_spectrum
 import conformance_heatmap_vis
 import Temporal_Behavior_Patterns
+
 import activity_interaction_network
+import senantic_conformance_word
 
 file_path = None
 event_log = None
@@ -18,6 +20,8 @@ root.title("Implementation of Process Mining Visualizations for Conformance Chec
 root.geometry("600x300")
 start_screen = tk.Frame(root, bg="lavender")
 vis_screen = tk.Frame(root, bg="white")
+tbp_screen = tk.Frame (root, bg = "white")
+tbp_screen = tk.Frame(root, bg="white")
 
 output_dir = './Final_Code/output_images'
 os.makedirs(output_dir, exist_ok=True)
@@ -25,14 +29,20 @@ os.makedirs(output_dir, exist_ok=True)
 def go_to_start_screen():
     """Switch to the start screen."""
     vis_screen.pack_forget()
+    tbp_screen.pack_forget()
     start_screen.pack(fill="both", expand=True)
 
 
 def go_to_vis_screen():
     """Switch to the visualization screen."""
     start_screen.pack_forget()
+    tbp_screen.pack_forget()
     vis_screen.pack(fill="both", expand=True)
 
+def go_to_tbp_screen():
+    """Switch to the Temporal Behavior Patterns screen."""
+    vis_screen.pack_forget()
+    tbp_screen.pack(fill="both", expand=True)
 
 def upload_file():
     """Handle file upload and proceed to visualization screen."""
@@ -60,6 +70,15 @@ def convert_to_event_log(file_path):
     else:
         raise ValueError(f"Unsupported file type: {ext}")
 
+def generate_tbp_chart(time_format):
+    """Generate Temporal Behavior Patterns Chart based on the selected time format."""
+    try:
+        Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path, time_format)
+        messagebox.showinfo("Success", f"Temporal Behavior Patterns Chart generated with time format: {time_format}")
+        go_to_vis_screen()
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to generate Temporal Behavior Patterns Chart: {e}")
+
 
 def generate_visualization():
     """Generate the selected visualization."""
@@ -86,19 +105,23 @@ def generate_visualization():
         elif buttonname == "bpmn":
             dottedpetri.generate_bpmn(event_log, output_dir)
         elif buttonname == "Activity Interaction Network":
-            activity_interaction_network.generate_activity_interaction_network_with_fitness(file_path)
+            activity_interaction_network.generate_activity_interaction_network_with_edge_fitness(file_path)
+        elif buttonname == "Semantic Conformance Word Clouds":
+            senantic_conformance_word.make_word_cloud(file_path)
         elif buttonname == "Conformance Heatmap with Concept Drift":
           if file_path and file_path.endswith(".csv"):
             messagebox.showwarning(
-            "Warning", 
+            "Warning",
             "For more detailed graphs, please use .xes files instead of .csv files.",
-            parent=root  
+            parent=root
         )
             conformance_heatmap_vis.generate_conformance_heatmap_with_time(file_path)
           else:
             conformance_heatmap_vis.generate_conformance_heatmap_with_time(file_path)
         elif buttonname == "Temporal Behavior Patterns Chart":
-            Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path , "days")
+            go_to_tbp_screen()
+
+            #Temporal_Behavior_Patterns.generate_Temporal_Behavior_Chart(file_path , "days")
         else:
             messagebox.showwarning("Warning", "Invalid option selected.")
     except Exception as e:
@@ -132,9 +155,9 @@ style.configure(
 )
 
 dropdown_var = tk.StringVar(value="Choose")
-dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox")
+dropdown = ttk.Combobox(vis_screen, textvariable=dropdown_var, state="readonly", style="Custom.TCombobox", width=40)
 dropdown['values'] = ['Petri Nets', 'Dotted Chart', 'Performance Spectrum', 'bpmn', 'Activity Interaction Network',
-                      'Conformance Heatmap with Concept Drift', 'Temporal Behavior Patterns Chart']
+                      'Conformance Heatmap with Concept Drift', 'Temporal Behavior Patterns Chart', 'Semantic Conformance Word Clouds']
 dropdown.pack(pady=40)
 
 button_visualize = tk.Button(
@@ -154,6 +177,49 @@ button_go_to_start = tk.Button(
     font=("Helvetica", 10)
 )
 button_go_to_start.pack(pady=30)
+######
+# Temporal Behavior Patterns screen
+time_format_var = tk.StringVar(value="days")
+
+label_tbp = tk.Label(
+    tbp_screen,
+    text="Select Time Format for Temporal Behavior Patterns Chart",
+    font=("Helvetica", 14),
+    bg="white"
+)
+label_tbp.pack(pady=20)
+
+time_format_options = ["days", "hours", "months", "years"]
+for option in time_format_options:
+    tk.Radiobutton(
+        tbp_screen,
+        text=option.capitalize(),
+        variable=time_format_var,
+        value=option,
+        font=("Helvetica", 12),
+        bg="white"
+    ).pack(anchor="w", padx=50)
+
+button_generate_tbp = tk.Button(
+    tbp_screen,
+    text="Generate Chart",
+    command=lambda: generate_tbp_chart(time_format_var.get()),
+    bg="lightblue",
+    font=("Helvetica", 10)
+)
+button_generate_tbp.pack(pady=20)
+
+button_back_to_vis = tk.Button(
+    tbp_screen,
+    text="Back",
+    command=go_to_vis_screen,
+    bg="lavender",
+    font=("Helvetica", 10)
+)
+button_back_to_vis.pack(pady=10)
+
+
+####
 
 start_screen.pack(fill="both", expand=True)
 root.mainloop()
